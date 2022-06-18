@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from . import forms
 from . import models
-from .serializers import DoctorSerializer,PresenceSerializer
+from account.models import User
+from .serializers import DoctorSerializer, PresenceSerializer
 from django.contrib import messages
 from rest_framework.generics import ListCreateAPIView
 from django.http import JsonResponse
@@ -71,5 +72,18 @@ class Visit(View):
     def get(self, request):
         return render(request, self.template_name)
 
-    def post(self):
-        pass
+    def post(self, request):
+        print(request.POST)
+        doctor = request.POST.get('doctor')
+        datetime_persian = request.POST.get('date')
+        hour = request.POST.get('hour')
+        user = request.POST.get('user')
+        instance_doctor = get_object_or_404(models.Doctor, id=doctor)
+        instance_user = get_object_or_404(User, serial=user)
+        models.Visit.objects.create(
+            doctor=instance_doctor,
+            datetime_persian=datetime_persian,
+            hour=hour,
+            user=instance_user
+        )
+        return JsonResponse({"status": 'Success'})

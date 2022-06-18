@@ -4,26 +4,45 @@
 <link rel="stylesheet" href="{% static 'my_change/css/jspc-gray.css' %}">
 <link rel="stylesheet" href="{% static 'my_change/css/sweetalert.css' %}">
 {% endblock css %}
-{% block main %}
-<form id="form_per">
+{% block popup-wrapper %}
 
+{% endblock popup-wrapper %}
+{% block main %}
+<div class="popup-wrapper"></div>
+<form id="form_visit">
     <div class="row m-2 p-3">
-        <div class="col-6 col-md-4">
-            <p>
+        <div class="col-6 col-md-6">
+            <div>
                 <label for="pcal1">تاریخ</label><br>
                 <input type="text" id="pcal1" class="pdate">
-            </p>
-            <p>
+            </div>
+            <div>
                 <label>پزشک</label>
                 <select class="form-control" id="doctor">
                 </select>
-            </p>
-            <p>
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-info" id="popup-btn">تعین زمان</button>
+                <div class="popup">
+                    <h4>
+                        تعین زمان
+                        <span class="popup-close"></span>
+                    </h4>
+                    <div>
+
+                    </div>
+                    <button class="popup-close btn btn-warning">بستن</button>
+                </div>
+            </div>
+            <div class="mt-2">
                 <button type="submit" class="btn btn-dark" id="form">ذخیره</button>
-            </p>
+
+            </div>
         </div>
     </div>
+
 </form>
+
 {% endblock main%}
 
 {% block script %}
@@ -33,6 +52,12 @@
 
 <script type="text/javascript">
 const namedoc = document.querySelector("#doctor");
+let form = document.getElementById('form_visit'); // selecting the form
+let recive=null;
+let data_send = new FormData();
+
+
+<!-- event onChange and  get date Persian -->
 var objCal = new AMIB.persianCalendar('pcal1', {
     onchange: function(pdate) {
         if (pdate) {
@@ -44,20 +69,25 @@ var objCal = new AMIB.persianCalendar('pcal1', {
     }
 });
 
-
+<!-- darayaft information model Doctor-->
 async function getdoctor() {
     try {
         for (var i = 0; i <= namedoc.options.length; i++) {
             namedoc.remove(0)
         }
         const response = await axios.get('/getdoctordateapi/',{params:{date:date_per(document.getElementById('pcal1').value)}});
-        console.log(response.data);
-        doctor = response.data;
-        doctor.forEach((item) => {
+<!--        console.log(response.data);-->
+        presence = response.data;
+        recive=presence;
+
+        presence.forEach((item) => {
             let doc = item.parent != null ? item.name + " ------ " : "";
             const option = new Option(doc + item.doctor.name, item.id);
             namedoc.appendChild(option);
         });
+
+        getID(recive);
+
     } catch (error) {
         console.error(error);
         Swal.fire({
@@ -71,11 +101,50 @@ async function getdoctor() {
 }
 
 
+<!--// payesh dropdown list doctor baraye taghirat -->
+namedoc.onchange = function() {
+                  getID(recive)}
+
+<!-- afzodan id doctor baraye ersal -->
+function getID(data){
+  data_send.append("doctor", namedoc.options[namedoc.selectedIndex].value);
+
+}
+
+<!-- ersal form ba axios be server -->
+form.addEventListener(
+'submit',
+function(event) { // 1
+    event.preventDefault()
+    data_send.append("date", date_per(document.getElementById('pcal1').value));
+    data_send.append("csrfmiddlewaretoken", '{{csrf_token}}');
+
+    axios.post('/visit/', data_send) // 4<!--
+        .then(res =>
+            Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'نوبت شما در روز ' + date_per(document.getElementById('pcal1').value) + 'ذخیره شد',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        ) // 5
+        .catch(errors =>
+
+              Swal.fire({
+                position: 'top',
+                icon: 'error',
+                title: 'بامشکل مواجه شدید,دوباره سعی کنید!',
+                showConfirmButton: false,
+                timer: 1500
+                })
+        )
+    data_send.delete("date")
+    data_send.delete("csrfmiddlewaretoken")
+    })
 
 
-
-
-
+<!-- eslah format 1401101 be 14010101 tedad 8 character -->
 function date_per(date){
     let result="";
     let d=date.split("/")
@@ -89,6 +158,33 @@ function date_per(date){
 
    return result;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
 
