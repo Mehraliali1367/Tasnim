@@ -1,0 +1,141 @@
+{% extends 'inc/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'my_change/css/jspc-gray.css' %}">
+<link rel="stylesheet" href="{% static 'my_change/css/sweetalert.css' %}">
+{% endblock css %}
+{% block main %}
+<form id="form_per">
+    {% csrf_token %}
+    <div class="row m-2 p-3">
+        <div class="col-6 col-md-4">
+            <p>
+                <label for="pcal1">تاریخ</label><br>
+                <input type="text" id="pcal1" class="pdate">
+            </p>
+            <p>
+                <label>پزشک</label>
+                <select class="form-control" id="doctor">
+                </select>
+            </p>
+            <p>
+                <label for="from_hour">از ساعت</label>
+                <input type="text" id="from_hour" class="form-control">
+            </p>
+            <p>
+                <label for="to_hour">تاساعت</label><br>
+                <input type="text" id="to_hour" class="form-control">
+            </p>
+            <p>
+                <label for="interval_sick">تعداد ویزیت دریک ساعت</label>
+                <input type="text" value="6" id="interval_sick" class="form-control">
+            </p>
+            <p>
+                <button type="submit" class="btn btn-dark" id="form">ذخیره</button>
+            </p>
+        </div>
+    </div>
+</form>
+{% endblock main%}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'my_change/js/js-persian-cal.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'my_change/js/sweetalert.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script type="text/javascript">
+const namedoc = document.querySelector("#doctor");
+var objCal = new AMIB.persianCalendar('pcal1', {
+    onchange: function(pdate) {
+        if (pdate) {
+
+            getdoctor();
+        } else {
+            alert('تاریخ واردشده نادرست است');
+        }
+    }
+});
+async function getdoctor() {
+    try {
+        for (var i = 0; i <= namedoc.options.length; i++) {
+            namedoc.remove(0)
+        }
+        const response = await axios.get('/getdoctorapi/');
+        console.log(response.data);
+        doctor = response.data;
+        doctor.forEach((item) => {
+            let doc = item.parent != null ? item.name + " -> " : "";
+            const option = new Option(doc + item.name, item.id);
+            namedoc.appendChild(option);
+        });
+    } catch (error) {
+        console.error(error);
+        Swal.fire({
+                position: 'top',
+                icon: 'error',
+                title: 'بامشکل مواجه شدید,دوباره سعی کنید!',
+                showConfirmButton: false,
+                timer: 1500
+                })
+    }
+}
+
+
+
+function date_per(date){
+    let result="";
+    let d=date.split("/")
+
+    d.forEach((item) => {
+         if(item.length==1)
+            item="0"+item
+
+         result+=item;
+    });
+
+   return result;
+}
+
+let form = document.getElementById('form_per'); // selecting the form
+
+form.addEventListener(
+'submit',
+function(event) { // 1
+    event.preventDefault()
+
+    let data = new FormData(); // 2
+    data.append("date", date_per(document.getElementById('pcal1').value));
+    data.append("doctor", namedoc.options[namedoc.selectedIndex].value);
+    data.append("from_hour", document.getElementById('from_hour').value);
+    data.append("doctor", document.getElementById('doctor').value);
+    data.append("to_hour", document.getElementById('to_hour').value);
+    data.append("interval_sick", document.getElementById('interval_sick').value);
+    data.append("csrfmiddlewaretoken", '{{csrf_token}}'); // 3
+
+        axios.post('/presencedoctor/', data) // 4<!--
+        .then(res =>
+            Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'دکتر  در روز مورد ' + date_per(document.getElementById('pcal1').value) + 'ذخیره شد',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        ) // 5
+        .catch(errors =>
+
+              Swal.fire({
+                position: 'top',
+                icon: 'error',
+                title: 'بامشکل مواجه شدید,دوباره سعی کنید!',
+                showConfirmButton: false,
+                timer: 1500
+                })
+        )
+
+}) // 6-->
+
+
+</script>
+
+{% endblock %}

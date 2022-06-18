@@ -1,0 +1,95 @@
+{% extends 'inc/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'my_change/css/jspc-gray.css' %}">
+<link rel="stylesheet" href="{% static 'my_change/css/sweetalert.css' %}">
+{% endblock css %}
+{% block main %}
+<form id="form_per">
+
+    <div class="row m-2 p-3">
+        <div class="col-6 col-md-4">
+            <p>
+                <label for="pcal1">تاریخ</label><br>
+                <input type="text" id="pcal1" class="pdate">
+            </p>
+            <p>
+                <label>پزشک</label>
+                <select class="form-control" id="doctor">
+                </select>
+            </p>
+            <p>
+                <button type="submit" class="btn btn-dark" id="form">ذخیره</button>
+            </p>
+        </div>
+    </div>
+</form>
+{% endblock main%}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'my_change/js/js-persian-cal.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'my_change/js/sweetalert.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script type="text/javascript">
+const namedoc = document.querySelector("#doctor");
+var objCal = new AMIB.persianCalendar('pcal1', {
+    onchange: function(pdate) {
+        if (pdate) {
+
+            getdoctor();
+        } else {
+            alert('تاریخ واردشده نادرست است');
+        }
+    }
+});
+
+
+async function getdoctor() {
+    try {
+        for (var i = 0; i <= namedoc.options.length; i++) {
+            namedoc.remove(0)
+        }
+        const response = await axios.get('/getdoctordateapi/',{params:{date:date_per(document.getElementById('pcal1').value)}});
+        console.log(response.data);
+        doctor = response.data;
+        doctor.forEach((item) => {
+            let doc = item.parent != null ? item.name + " ------ " : "";
+            const option = new Option(doc + item.doctor.name, item.id);
+            namedoc.appendChild(option);
+        });
+    } catch (error) {
+        console.error(error);
+        Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'بامشکل مواجه شدید,دوباره سعی کنید!',
+                showConfirmButton: false,
+                timer: 2000
+                })
+    }
+}
+
+
+
+
+
+
+
+function date_per(date){
+    let result="";
+    let d=date.split("/")
+
+    d.forEach((item) => {
+         if(item.length==1)
+            item="0"+item
+
+         result+=item;
+});
+
+   return result;
+}
+
+</script>
+
+{% endblock %}

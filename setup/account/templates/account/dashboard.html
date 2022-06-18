@@ -1,0 +1,9 @@
+{% extends 'inc/base.html' %}
+{% block main %}
+<div>
+{% for img in user.images.all %}
+<img src="{{ img.image.url }}" style="height:200px;width:200px">
+{% endfor %}
+</div>
+
+{% endblock main %}

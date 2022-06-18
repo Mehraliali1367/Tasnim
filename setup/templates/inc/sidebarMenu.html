@@ -1,0 +1,67 @@
+{% if user.is_authenticated %}
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fa fa-plus-square-o"></i>
+        <p>
+            <i class="fa fa-angle-left right"></i>
+            کاربری
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{% url 'account:dashboard' user.serial %}" class="nav-link">
+                <i class="fa  fa-circle-o nav-icon"></i>
+                <p>داشبورد</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'account:profile' %}" class="nav-link">
+                <i class="fa  fa-circle-o nav-icon"></i>
+                <p>پروفایل</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="" class="nav-link">
+                <i class="fa  fa-lock nav-icon"></i>
+                <p>تغییر رمز</p>
+            </a>
+        </li>
+    </ul>
+</li>
+{% else %}
+<li class="nav-item">
+    <a href="{% url 'account:login' %}" class="nav-link">
+        <i class="fa  fa-circle-o nav-icon"></i>
+        <p>ورود</p>
+    </a>
+</li>
+{% endif %}
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fa fa-plus-square-o"></i>
+        <p>
+            <i class="fa fa-angle-left right"></i>
+            نوبت دهی
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{% url 'take_turns:doctordifinit' %}" class="nav-link">
+                <i class="fa  fa-circle-o nav-icon"></i>
+                <p>تعریف دکتر</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'take_turns:presencedoctor' %}" class="nav-link">
+                <i class="fa  fa-circle-o nav-icon"></i>
+                <p>حضوردکتر</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'take_turns:visit' %}" class="nav-link">
+                <i class="fa  fa-circle-o nav-icon"></i>
+                <p>نوبت دهی</p>
+            </a>
+        </li>
+    </ul>
+</li>
