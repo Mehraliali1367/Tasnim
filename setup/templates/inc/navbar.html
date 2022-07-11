@@ -11,6 +11,14 @@
         <li class="nav-item d-none d-sm-inline-block ">
             <a href="{% url 'account:dashboard' user.serial %}" class="nav-link"> داشبورد </a>
         </li>
+        {% if user.is_admin %}
+        <li class="nav-item d-none d-sm-inline-block ">
+            <a href="{% url 'account:register' %}" class="nav-link">ثبت نام</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block ">
+            <a href="{% url 'account:search' %}" class="nav-link">جستجو کاربران</a>
+        </li>
+        {% endif %}
         <li class="nav-item d-none d-sm-inline-block ">
             <a href="{% url 'account:logout' %}" class="nav-link"> خروج </a>
         </li>
@@ -18,7 +26,11 @@
         <li class="nav-item d-none d-sm-inline-block ">
             <a href="{% url 'account:login' %}" class="nav-link"> ورود </a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block ">
+            <a href="{% url 'account:register' %}" class="nav-link">ثبت نام</a>
+        </li>
         {% endif %}
+
     </ul>
 
 </nav>

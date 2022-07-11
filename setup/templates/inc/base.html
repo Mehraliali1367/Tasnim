@@ -25,10 +25,11 @@
     <link rel="stylesheet" href="{% static 'adminlt/dist/css/adminlte.min.css' %}">
     <link rel="stylesheet" href="{% static 'adminlt/dist/css/bootstrap-rtl.min.css' %}">
     <link rel="stylesheet" href="{% static 'adminlt/dist/css/custom-style.css' %}">
+    <link rel="stylesheet" href="{% static 'adminlt/dist/css/persian-datepicker.min.css' %}">
     <link rel="stylesheet" href="{% static 'my_change/css/mycss.css' %}">
+    <link rel="stylesheet" href="{% static 'my_change/css/jspc-gray.css' %}">
 
     {% block css %}
-    <link rel="stylesheet" href="{% static 'my_change/css/jspc-gray.css' %}">
     {% endblock css %}
 </head>
 <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -126,6 +127,11 @@
 <!--  })-->
 <!--</script>-->
 <!-- Page script -->
+
+<!--persian Calander-->
+<script type="text/javascript" src="{% static 'adminlt/dist/js/persian-date.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'adminlt/dist/js/persian-datepicker.min.js' %}"></script>
+
 
 
 {% block script %}{% endblock %}

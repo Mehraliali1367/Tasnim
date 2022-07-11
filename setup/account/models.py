@@ -1,22 +1,22 @@
+import jdatetime
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from . import managers
 from django.dispatch import receiver  # add this
 from django.db.models.signals import post_save  # add this
 from kavenegar import *
-
-
-# import json
-
-
-# Create your models here.
+from django.utils import timezone
 
 
 class User(AbstractUser):
     serial = models.CharField(max_length=20, primary_key=True, unique=True, verbose_name='سریال')
+    melli = models.CharField(max_length=10, unique=True, blank=True, null=True, verbose_name='کدملی')
     username = models.CharField(max_length=10, blank=True, null=True)
     full_name = models.CharField(max_length=500, verbose_name='نام کامل')
+    brithday = models.IntegerField(verbose_name='سن', blank=True, null=True)
+    place = models.CharField(max_length=500, verbose_name='محل سکونت', blank=True, null=True)
     tel = models.CharField(max_length=20, verbose_name='موبایل')
+    date = models.DateTimeField(default=timezone.now, verbose_name='تاریخ عضویت')
     is_admin = models.BooleanField(default=False, verbose_name='کاربر ارشد')
     is_active = models.BooleanField(default=True, verbose_name='فعال')
     objects = managers.MyUserManager()
@@ -56,9 +56,9 @@ class Images(models.Model):
 
 
 def save_images(sender, **kwargs):
-    print("#"*100)
+    print("#" * 100)
     print(kwargs['instance'])
-    user=User.objects.get(serial=kwargs['instance'])
+    user = User.objects.get(serial=kwargs['instance'])
     print(user.tel)
     if kwargs['created']:
         try:
@@ -82,10 +82,3 @@ def save_images(sender, **kwargs):
 
 
 post_save.connect(save_images, sender=Images)
-
-
-class Test(models.Model):
-    name = models.CharField(max_length=200, null=True, blank=True)
-
-    def __str__(self):
-        return self.name

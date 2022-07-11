@@ -4,13 +4,13 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from . import forms
 from django.contrib import messages
-from .models import User, Images, Test
+from .models import User, Images
 from django.contrib.auth import authenticate, login, logout
 from rest_framework.generics import ListAPIView, ListCreateAPIView
-from .serializers import TestSer
+from .mixins import AdminAccessMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-# Create your views here.
 class UserLogin(View):
     form_class = forms.UserLoginForm
 
@@ -60,7 +60,7 @@ class UserRegister(View):
             return render(request, 'account/register.html', {'form': form})
 
 
-class Profile(UpdateView):
+class Profile(LoginRequiredMixin, UpdateView):
     form_class = forms.ProfileForms
     success_url = reverse_lazy('account:profile')
     template_name = 'account/profile.html'
@@ -77,7 +77,7 @@ class Profile(UpdateView):
 
 
 class Dashboard(View):
-    template_name = 'account/dashboardadmin.html'
+    template_name = 'account/dashboard.html'
     form_class = forms.ImagesForm
 
     def get(self, request, serial):
@@ -88,14 +88,39 @@ class Dashboard(View):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             cd = form.cleaned_data
-            print("#"*100)
-            print(cd)
-            user = get_object_or_404(User, serial=cd['user'])
-            Images.objects.create(user=user, image=cd['image'])
+            user = get_object_or_404(User, serial=serial)
+            Images.objects.create(user=user, image=cd['img'])
             messages.success(request, 'your image updated successfully', 'info')
             return redirect('account:dashboard', user.serial)
 
 
-class TestList(ListCreateAPIView):
-    queryset = Test.objects.all()
-    serializer_class = TestSer
+class Edit(LoginRequiredMixin, AdminAccessMixin, UpdateView):
+    form_class = forms.ProfileForms
+    success_url = reverse_lazy('account:search')
+    template_name = 'account/edit.html'
+
+    def get_object(self):
+        print("@" * 100)
+        print(self.request)
+        return User.objects.get(serial=self.request.GET["serial"])
+
+    def get_form_kwargs(self):
+        kwargs = super(Edit, self).get_form_kwargs()
+        kwargs.update({
+            'user': self.request.user
+        })
+        return kwargs
+
+
+class Search(LoginRequiredMixin, AdminAccessMixin, View):
+    template_name = 'account/search.html'
+    form_class = forms.SearchForm
+
+    def get(self, request):
+        form = self.form_class
+        print("#" * 100)
+        print(self.request.GET)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self):
+        pass

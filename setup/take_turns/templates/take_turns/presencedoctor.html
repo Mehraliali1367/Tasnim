@@ -5,56 +5,75 @@
 <link rel="stylesheet" href="{% static 'my_change/css/sweetalert.css' %}">
 {% endblock css %}
 {% block main %}
-<form id="form_per">
-    {% csrf_token %}
-    <div class="row m-2 p-3">
-        <div class="col-6 col-md-4">
-            <p>
-                <label for="pcal1">تاریخ</label><br>
-                <input type="text" id="pcal1" class="pdate">
-            </p>
-            <p>
-                <label>پزشک</label>
-                <select class="form-control" id="doctor">
-                </select>
-            </p>
-            <p>
-                <label for="from_hour">از ساعت</label>
-                <input type="text" id="from_hour" class="form-control">
-            </p>
-            <p>
-                <label for="to_hour">تاساعت</label><br>
-                <input type="text" id="to_hour" class="form-control">
-            </p>
-            <p>
-                <label for="interval_sick">تعداد ویزیت دریک ساعت</label>
-                <input type="text" value="6" id="interval_sick" class="form-control">
-            </p>
-            <p>
-                <button type="submit" class="btn btn-dark" id="form">ذخیره</button>
-            </p>
+<div class="col">
+    <div class="card card-danger">
+        <div class="card-header">
+            <h3 class="card-title">فرم ثبت حضور دکتر</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-12 m-3">
+                <form id="form_per">
+                    {% csrf_token %}
+<!--                    <div class="row m-2 p-3">-->
+<!--                        <div class="col-6 col-md-4">-->
+                            <p>
+                                <label for="pdate">تاریخ</label><br>
+                                <input type="text" id="pdate" class="on-select-example form-control">
+                            </p>
+                            <p>
+                                <label>پزشک</label>
+                                <select class="form-control" id="doctor">
+                                </select>
+                            </p>
+                            <p>
+                                <label for="from_hour">از ساعت</label>
+                                <input type="text" id="from_hour" class="form-control">
+                            </p>
+                            <p>
+                                <label for="to_hour">تاساعت</label><br>
+                                <input type="text" id="to_hour" class="form-control">
+                            </p>
+                            <p>
+                                <label for="interval_sick">تعداد ویزیت دریک ساعت</label>
+                                <input type="text" value="6" id="interval_sick" class="form-control">
+                            </p>
+                            <p>
+                                <button type="submit" class="btn btn-dark" id="form">ذخیره</button>
+                            </p>
+<!--                        </div>-->
+                    <!--                    </div>-->
+                </form>
+            </div>
+            <!--          <div class="col-md-6 m-4" style="background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(20, 20, 20, 0.5)),url('{% static 'my_change/images/icon/icon6.jpeg' %}') no-repeat center center/cover;height: 100vh;padding:0%;"></div>-->
+            <div class="col-md-6 col-sm-6 m-4">
+                <img class="card-img" src="{% static 'my_change/images/icon/icon6.jpeg' %}">
+            </div>
         </div>
     </div>
-</form>
-{% endblock main%}
+    {% endblock main%}
 
-{% block script %}
-<script type="text/javascript" src="{% static 'my_change/js/js-persian-cal.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'my_change/js/sweetalert.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    {% block script %}
+    <script type="text/javascript" src="{% static 'my_change/js/sweetalert.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
+let pdate = document.getElementById('pdate');
+document.getElementById('pdate').addEventListener('click', ()=>{
+              $(document).ready(function() {
+                            $(".on-select-example").pDatepicker({
+                                                     format: 'YYYYMMDD',
+                            });
+
+                            });
+              });
+
+document.getElementById('doctor').addEventListener('click', ()=>{
+                    if ((pdate.value).length==8){
+                            getdoctor()
+                    }
+              });
 const namedoc = document.querySelector("#doctor");
-var objCal = new AMIB.persianCalendar('pcal1', {
-    onchange: function(pdate) {
-        if (pdate) {
 
-            getdoctor();
-        } else {
-            alert('تاریخ واردشده نادرست است');
-        }
-    }
-});
 async function getdoctor() {
     try {
         for (var i = 0; i <= namedoc.options.length; i++) {
@@ -136,6 +155,8 @@ function(event) { // 1
 }) // 6-->
 
 
-</script>
 
-{% endblock %}
+
+    </script>
+
+    {% endblock %}
