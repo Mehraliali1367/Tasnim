@@ -94,3 +94,24 @@ class GetHourVisitApi(ListCreateAPIView):
 
     def get_queryset(self):
         return models.Visit.objects.filter(datetime_persian=self.request.GET["date"])
+
+
+class ServicesDifinit(View):
+    template_name = 'take_turns/services.html'
+    form_class = forms.ServicesForm
+
+    def get(self, request):
+        return render(request, self.template_name, {'form': self.form_class})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            service = models.Services(service=cd['service'])
+            service.save()
+            service = cd['service']
+            messages.success(request, f' {service} ذخیره شد', 'success')
+            return redirect('take_turns:servicesdifinit')
+        else:
+            messages.success(request, 'can not save doctor', 'warning')
+            return redirect('take_turns:servicesdifinit')

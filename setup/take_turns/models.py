@@ -2,6 +2,7 @@ from django.db import models
 from account.models import User
 from django.utils import timezone
 
+
 class Doctor(models.Model):
     name = models.CharField(max_length=200)
     status = models.BooleanField(default=True, blank=True, null=True)
@@ -32,6 +33,6 @@ class Visit(models.Model):
         return self.user.full_name
 
 
-class Sickness(models.Model):
-    subject=models.CharField(max_length=200)
+class Services(models.Model):
+    service = models.CharField(max_length=200)
     date = models.DateTimeField(default=timezone.now, verbose_name='تاریخ ایجاد')
