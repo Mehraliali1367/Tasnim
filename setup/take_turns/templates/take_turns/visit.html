@@ -21,6 +21,7 @@
                 <div class="col-md-4 col-12">
                     <label>پزشک</label>
                     <select class="form-control" id="doctor">
+                        <option>برای این تاریخ پزشکی تعریف نشده است</option>
                     </select>
                 </div>
                 <div class="col-md-12 col-12 mt-3">
@@ -84,20 +85,15 @@ let recive=null;
 let data_send = new FormData();
 let pdate = document.getElementById('pdate');
 
-document.getElementById('pdate').addEventListener('click', ()=>{
-              $(document).ready(function() {
-                            $(".on-select-example").pDatepicker({
-                                                     format: 'YYYY/MM/DD',
-                            });
+let reciveHour=null;
 
-                            });
-              });
-document.getElementById('doctor').addEventListener('click', ()=>{
-                    if ((pdate.value).length==8){
-                            getdoctor()
-                    }
-              });
+  $(document).ready(function() {
+    $(".on-select-example").pDatepicker({
+        format: 'YYYY/MM/DD',
+        onSelect:getdoctor,
+    });
 
+  });
 <!-- darayaft information model Doctor-->
 async function getdoctor() {
     try {
@@ -105,19 +101,22 @@ async function getdoctor() {
             namedoc.remove(0)
         }
         const response = await axios.get('/getdoctordateapi/',{params:{date:date_per(document.getElementById('pdate').value)}});
-        presence = response.data;
-        recive=presence;
+        recive = response.data;
+        if(recive.length>0){
+            recive.forEach((item) => {
+                let doc = item.parent != null ? item.name + " ------ " : "";
+                const option = new Option(doc + item.doctor.name, item.id);
+                option.setAttribute("from",item.from_hour);
+                option.setAttribute("to",item.to_hour);
+                option.setAttribute("interval",item.interval_sick);
+                namedoc.appendChild(option);
+            });
+            getID(recive);
+        }else{
+                const option = new Option( " برای این تاریخ پزشکی تعریف نشده است");
+                namedoc.appendChild(option);
+        }
 
-        presence.forEach((item) => {
-            let doc = item.parent != null ? item.name + " ------ " : "";
-            const option = new Option(doc + item.doctor.name, item.id);
-            option.setAttribute("from",item.from_hour);
-            option.setAttribute("to",item.to_hour);
-            option.setAttribute("interval",item.interval_sick);
-            namedoc.appendChild(option);
-        });
-
-        getID(recive);
 
     } catch (error) {
         console.error(error);
@@ -137,9 +136,13 @@ namedoc.onchange = function() {
                   getID(recive)}
 
 <!-- afzodan id doctor baraye ersal -->
-function getID(data){
+async function getID(data){
+try{
     let obj=namedoc.options[namedoc.selectedIndex];
     data_send.append("doctor", obj.value);
+    const response = await axios.get('/gethourvisit/',{params:{date:date_per(document.getElementById('pdate').value)}});
+        reciveHour = response.data;
+<!--        console.log(reciveHour)-->
     create_radio(parseInt(obj.getAttribute("from")),parseInt(obj.getAttribute("to")),parseInt(obj.getAttribute("interval")))
 
     const btn = document.querySelector('#my-modal');
@@ -156,7 +159,7 @@ function getID(data){
                 }
             }
         });
-
+    }catch(error){console.log(error)}
 }
 
 <!-- ersal form ba axios be server -->
@@ -176,7 +179,7 @@ function(event) { // 1
             Swal.fire({
                 position: 'top',
                 icon: 'success',
-                title: 'نوبت شما در روز ' + date_per(document.getElementById('pcal1').value) + 'ذخیره شد',
+                title: ' نوبت شما در روز ' + document.getElementById('pdate').value + 'ذخیره شد  ',
                 showConfirmButton: false,
                 timer: 2000
             })
@@ -218,6 +221,8 @@ let myradio=document.querySelector("#my-modal");
 myradio.className="modal-body";
 myradio.innerHTML="";
 
+
+
 for (let i = 0; i < to-from ;i++) {
     let time=60/identity;
     let hour=from+i;
@@ -230,16 +235,25 @@ for (let i = 0; i < to-from ;i++) {
         for(let j=0;j< identity;j++){
             let Id=((hour.toString()).length>1?hour:"0"+hour).toString()+":"+(time*(j)>0?time*(j):"00").toString();
             let div=document.createElement("div");
-                div.className="form-check";
                 div.classList.add('ml-3');
                 div.classList.add('pr-4');
-            let input=document.createElement("input");
+                let input=document.createElement("input");
                 input.className="form-check-input";
                 input.setAttribute('type','radio');
                 input.setAttribute('id',Id);
+
+    <!-- baraye sozandan zaman haye gerefte shode -->
+
+                if(reciveHour){
+                    reciveHour.forEach((item) => {
+                        if(Id==item.hour){
+                                input.setAttribute('disabled',true);
+                        }
+                    })
+                }
                 input.setAttribute('name',"radio");
                 input.setAttribute('value',Id);
-            let label=document.createElement("label");
+                let label=document.createElement("label");
                 label.className="form-check-label";
                 label.setAttribute('for','exampleRadios1');
                 label.innerText=Id
@@ -251,6 +265,8 @@ for (let i = 0; i < to-from ;i++) {
 
     }
 }
+
+
 
 
 

@@ -4,7 +4,7 @@ from account.models import User
 
 class Doctor(models.Model):
     name = models.CharField(max_length=200)
-    status = models.BooleanField(blank=True, null=True)
+    status = models.BooleanField(default=True, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -26,7 +26,7 @@ class Visit(models.Model):
     datetime_persian = models.CharField(max_length=10)
     hour = models.CharField(max_length=10)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='visit')
-    reason = models.CharField(max_length=200)
+    reason = models.CharField(max_length=1000)
 
     def __str__(self):
         return self.user.full_name

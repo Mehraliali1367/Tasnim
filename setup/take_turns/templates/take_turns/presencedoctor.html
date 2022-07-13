@@ -23,6 +23,7 @@
                             <p>
                                 <label>پزشک</label>
                                 <select class="form-control" id="doctor">
+                                     <option>برای این تاریخ پزشکی تعریف نشده است</option>
                                 </select>
                             </p>
                             <p>
@@ -62,16 +63,14 @@ document.getElementById('pdate').addEventListener('click', ()=>{
               $(document).ready(function() {
                             $(".on-select-example").pDatepicker({
                                                      format: 'YYYYMMDD',
+                                                     onSelect:getdoctor,
+                                                     autoClose:true
                             });
 
                             });
               });
 
-document.getElementById('doctor').addEventListener('click', ()=>{
-                    if ((pdate.value).length==8){
-                            getdoctor()
-                    }
-              });
+
 const namedoc = document.querySelector("#doctor");
 
 async function getdoctor() {
@@ -123,7 +122,7 @@ function(event) { // 1
     event.preventDefault()
 
     let data = new FormData(); // 2
-    data.append("date", date_per(document.getElementById('pcal1').value));
+    data.append("date", date_per(document.getElementById('pdate').value));
     data.append("doctor", namedoc.options[namedoc.selectedIndex].value);
     data.append("from_hour", document.getElementById('from_hour').value);
     data.append("doctor", document.getElementById('doctor').value);
@@ -136,7 +135,7 @@ function(event) { // 1
             Swal.fire({
                 position: 'top',
                 icon: 'success',
-                title: 'دکتر  در روز مورد ' + date_per(document.getElementById('pcal1').value) + 'ذخیره شد',
+                title: 'دکتر  در روز مورد ' + date_per(document.getElementById('pdate').value) + 'ذخیره شد',
                 showConfirmButton: false,
                 timer: 1500
             })

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Doctor, Presence
+from .models import Doctor, Presence, Visit
 
 
 class DoctorSerializer(serializers.ModelSerializer):
@@ -14,7 +14,7 @@ class PresenceSerializer(serializers.ModelSerializer):
     def get_more_doctor(self, obj):
         return {
             "name": obj.doctor.name,
-            "id":obj.doctor.id
+            "id": obj.doctor.id
         }
 
     doctor = serializers.SerializerMethodField("get_more_doctor")
@@ -22,3 +22,9 @@ class PresenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Presence
         fields = "__all__"
+
+
+class VisitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Visit
+        fields = ("hour", "datetime_persian")

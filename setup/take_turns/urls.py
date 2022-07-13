@@ -7,5 +7,6 @@ urlpatterns = [
     path('getdoctorapi/', views.GetDoctorApi.as_view(), name='getdoctorapi'),
     path('getdoctordateapi/', views.GetDoctorDateApi.as_view(), name='getdoctordateapi'),
     path('presencedoctor/', views.PresenceDoctor.as_view(), name='presencedoctor'),
+    path('gethourvisit/', views.GetHourVisitApi.as_view(), name='gethourvisitapi'),
     path('visit/', views.Visit.as_view(), name='visit'),
 ]

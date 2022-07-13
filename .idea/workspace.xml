@@ -4,43 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/setup/account/templates/account/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Tasnim.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tasnim.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/account/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/account/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/account/managers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/mixins.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/account/mixins.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/account/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/templates/account/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/account/templates/account/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/templates/account/dashboardadmin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/templates/account/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/account/templates/account/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/templates/account/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/account/templates/account/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/account/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/account/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/setup/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/setup/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/static/my_change/css/mycss.css" beforeDir="false" afterPath="$PROJECT_DIR$/setup/static/my_change/css/mycss.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/migrations/0002_doctor_status.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/migrations/0003_alter_doctor_status.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/migrations/0004_alter_doctor_status.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/migrations/0005_alter_doctor_status.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/presencedoctor.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/presencedoctor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/visit.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/visit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/templates/inc/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/templates/inc/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/templates/inc/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/templates/inc/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/templates/inc/sidebarMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/templates/inc/sidebarMenu.html" afterDir="false" />
-    </list>
+    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
