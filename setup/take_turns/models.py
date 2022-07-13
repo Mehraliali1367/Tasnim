@@ -1,6 +1,6 @@
 from django.db import models
 from account.models import User
-
+from django.utils import timezone
 
 class Doctor(models.Model):
     name = models.CharField(max_length=200)
@@ -30,3 +30,8 @@ class Visit(models.Model):
 
     def __str__(self):
         return self.user.full_name
+
+
+class Sickness(models.Model):
+    subject=models.CharField(max_length=200)
+    date = models.DateTimeField(default=timezone.now, verbose_name='تاریخ ایجاد')

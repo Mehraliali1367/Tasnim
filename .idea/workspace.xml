@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="" />
+    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="14000421 12:00">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup/take_turns/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/visit.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/visit.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +51,14 @@
       <option name="presentableId" value="Default" />
       <updated>1656435180428</updated>
     </task>
+    <task id="LOCAL-00001" summary="14000421 12:00">
+      <created>1657696168920</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1657696168920</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -59,5 +71,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="14000421 12:00" />
+    <option name="LAST_COMMIT_MESSAGE" value="14000421 12:00" />
   </component>
 </project>
