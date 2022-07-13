@@ -11,18 +11,21 @@
             <h3 class="card-title">فرم دریافت نوبت</h3>
         </div>
         <form id="form_visit">
-            <div class="row m-2 p-3">
-
-                <div class="col-md-4 col-12">
-                    <label for="pdate">تاریخ</label><br>
-                    <input type="text" id="pdate" class="on-select-example form-control">
+            <div class="m-2 p-3">
+                <div class="row">
+                    <div class="col-md-4 col-12">
+                        <label for="pdate">تاریخ</label><br>
+                        <input type="text" id="pdate" class="on-select-example form-control">
+                    </div>
                 </div>
-                <br/>
-                <div class="col-md-4 col-12">
-                    <label>پزشک</label>
-                    <select class="form-control" id="doctor">
-                        <option>برای این تاریخ پزشکی تعریف نشده است</option>
-                    </select>
+
+                <div class="row mt-3">
+                    <div class="col-md-4 col-12">
+                        <label>پزشک</label>
+                        <select class="form-control" id="doctor">
+                            <option>برای این تاریخ پزشکی تعریف نشده است</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-md-12 col-12 mt-3">
                     <button type="button" class="btn btn-dark p-3" data-toggle="modal" data-target="#exampleModal">
@@ -64,8 +67,10 @@
                     <input type="text" name="serial" id="serial" class="form-control" value="{{user.serial}}">
                 </div>
                 <div class="col-md-4 col-12 mt-3">
-                    <label for="serial">علت مراجعه</label><br>
-                    <input type="text" name="serial" id="serial" class="form-control" value="{{user.serial}}">
+                    <label for="service">علت مراجعه</label><br>
+                    <select class="form-control" id="service">
+                        <option> خدمتی در نظرگرفته نشده است</option>
+                    </select>
                 </div>
                 <div class="col-md-12 col-12 mt-3">
                     <button type="submit" class="btn btn-danger" id="form">ذخیره</button>
@@ -83,10 +88,13 @@
 
 <script type="text/javascript">
 const namedoc = document.querySelector("#doctor");
+const services = document.querySelector("#service");
 let form = document.getElementById('form_visit'); // selecting the form
 let recive=null;
 let data_send = new FormData();
 let pdate = document.getElementById('pdate');
+
+getservice()
 
 let reciveHour=null;
 
@@ -133,6 +141,30 @@ async function getdoctor() {
     }
 }
 
+async function getservice() {
+    try {
+        for (var i = 0; i <= namedoc.options.length; i++) {
+            service.remove(0)
+        }
+        const response = await axios.get('/getserviceapi/');
+        console.log(response.data);
+        service = response.data;
+        service.forEach((item) => {
+            let doc = item.parent != null ? item.name + " -> " : "";
+            const option = new Option(doc + item.service, item.id);
+            services.appendChild(option);
+        });
+    } catch (error) {
+        console.error(error);
+        Swal.fire({
+                position: 'top',
+                icon: 'error',
+                title: 'بامشکل مواجه شدید,دوباره سعی کنید!',
+                showConfirmButton: false,
+                timer: 1500
+                })
+    }
+}
 
 <!--// payesh dropdown list doctor baraye taghirat -->
 namedoc.onchange = function() {
@@ -268,6 +300,8 @@ for (let i = 0; i < to-from ;i++) {
 
     }
 }
+
+
 
 
 

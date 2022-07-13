@@ -3,7 +3,7 @@ from django.views import View
 from . import forms
 from . import models
 from account.models import User
-from .serializers import DoctorSerializer, PresenceSerializer, VisitSerializer
+from .serializers import DoctorSerializer, PresenceSerializer, VisitSerializer,ServiceSerializer
 from django.contrib import messages
 from rest_framework.generics import ListCreateAPIView
 from django.http import JsonResponse
@@ -115,3 +115,8 @@ class ServicesDifinit(View):
         else:
             messages.success(request, 'can not save doctor', 'warning')
             return redirect('take_turns:servicesdifinit')
+
+
+class GetServiceApi(ListCreateAPIView):
+    queryset = models.Services.objects.all()
+    serializer_class = ServiceSerializer

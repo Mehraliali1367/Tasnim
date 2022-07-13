@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="14000421 12:00">
-      <change afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/services.html" afterDir="false" />
+    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="14000421 13:30">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/setup/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup/take_turns/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/presencedoctor.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/presencedoctor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/visit.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/visit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup/take_turns/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup/take_turns/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/templates/inc/sidebarMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/templates/inc/sidebarMenu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657698226268</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="14000421 13:30">
+      <created>1657702581344</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1657702581344</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -97,6 +102,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="14000421 12:00" />
-    <option name="LAST_COMMIT_MESSAGE" value="14000421 12:00" />
+    <MESSAGE value="14000421 13:30" />
+    <option name="LAST_COMMIT_MESSAGE" value="14000421 13:30" />
   </component>
 </project>

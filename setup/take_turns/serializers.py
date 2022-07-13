@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Doctor, Presence, Visit
+from .models import Doctor, Presence, Visit,Services
 
 
 class DoctorSerializer(serializers.ModelSerializer):
@@ -7,6 +7,14 @@ class DoctorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Doctor
+        fields = "__all__"
+
+
+class ServiceSerializer(serializers.ModelSerializer):
+    # user = serializers.CharField(source="user.serial")
+
+    class Meta:
+        model = Services
         fields = "__all__"
 
 
