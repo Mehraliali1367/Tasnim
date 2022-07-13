@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="test">
+    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="change venv 14000422 01:25">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Tasnim.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tasnim.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirementsOLd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/visit.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/visit.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657730846502</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="change venv 14000422 01:25">
+      <created>1657745724760</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1657745724760</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +130,7 @@
     <MESSAGE value="14000421 12:00" />
     <MESSAGE value="14000421 13:30" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="change venv 14000422 01:25" />
+    <option name="LAST_COMMIT_MESSAGE" value="change venv 14000422 01:25" />
   </component>
 </project>
