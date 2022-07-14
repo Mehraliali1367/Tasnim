@@ -9,20 +9,9 @@
 <div class="col">
     <div class="card card-danger">
         <div class="card-header">
-            <h3 class="card-title">فرم جستجو دکتر</h3>
+            <h3 class="card-title">فرم جستجو پزشک</h3>
         </div>
-        <form>
-            <div class="row m-2 p-3">
-                <div class="col-md-3 col-sm-4 col-8 ">
-                    {% csrf_token %}
-                    <label for="obj">جستجو</label>
-                    <input type="text" id="obj" class="form-control">
-                </div>
-                <div class="col-md-2 col-2 d-flex align-items-end ">
-                    <button class="btn btn-danger" id="btnobj" type="submit">جستجو</button>
-                </div>
-            </div>
-        </form>
+
         <div class="row p-3 col-md-8">
             <table id="tbldoctor"
                    class="table table-bordered  text-align-center table-responsive-sm table-responsive-md">

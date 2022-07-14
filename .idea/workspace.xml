@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="14000421 14:00">
-      <change afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirementsOLd.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/account/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/setup/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/presencedoctor.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/presencedoctor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/views.py" afterDir="false" />
+    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="14010423 13:00">
+      <change beforePath="$PROJECT_DIR$/setup/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,16 +35,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/tasnim/Tasnim/setup/take_turns/templates/take_turns",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/tasnim/Tasnim/setup/take_turns/templates/take_turns&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\tasnim\Tasnim\setup\take_turns\templates\take_turns" />
@@ -101,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657704960521</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="14010423 13:00">
+      <created>1657787318897</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1657787318897</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +120,7 @@
     <MESSAGE value="14000421 12:00" />
     <MESSAGE value="14000421 13:30" />
     <MESSAGE value="14000421 14:00" />
-    <option name="LAST_COMMIT_MESSAGE" value="14000421 14:00" />
+    <MESSAGE value="14010423 13:00" />
+    <option name="LAST_COMMIT_MESSAGE" value="14010423 13:00" />
   </component>
 </project>
