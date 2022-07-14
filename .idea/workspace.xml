@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="14010423_2 13:02">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/templates/inc/sidebarMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/templates/inc/sidebarMenu.html" afterDir="false" />
-    </list>
+    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="14010423_3 13:50" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657787552981</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="14010423_3 13:50">
+      <created>1657790357076</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657790357076</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +133,7 @@
     <MESSAGE value="14000421 14:00" />
     <MESSAGE value="14010423 13:00" />
     <MESSAGE value="14010423_2 13:02" />
-    <option name="LAST_COMMIT_MESSAGE" value="14010423_2 13:02" />
+    <MESSAGE value="14010423_3 13:50" />
+    <option name="LAST_COMMIT_MESSAGE" value="14010423_3 13:50" />
   </component>
 </project>
