@@ -3,10 +3,13 @@ from django.views import View
 from . import forms
 from . import models
 from account.models import User
-from .serializers import DoctorSerializer, PresenceSerializer, VisitSerializer,ServiceSerializer
+from .serializers import DoctorSerializer, PresenceSerializer, VisitSerializer, ServiceSerializer
 from django.contrib import messages
 from rest_framework.generics import ListCreateAPIView
 from django.http import JsonResponse
+from rest_framework.generics import CreateAPIView, ListAPIView,RetrieveUpdateDestroyAPIView
+from rest_framework.response import Response
+from rest_framework import status
 
 
 class DoctorDifinit(View):
@@ -120,3 +123,23 @@ class ServicesDifinit(View):
 class GetServiceApi(ListCreateAPIView):
     queryset = models.Services.objects.all()
     serializer_class = ServiceSerializer
+
+
+class GetDoctors(View):
+    template_name = 'take_turns/search.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+
+class DeleteDoctor(RetrieveUpdateDestroyAPIView):
+    serializer_class = DoctorSerializer
+
+    # permission_classes = [permissions.IsAuthenticated]
+
+    def delete(self, request, *args, **kwargs):
+        id = self.request.GET.get('obj', None)
+        doctor = models.Doctor.objects.get(id=id)
+        doctor.delete()
+
+        return Response({status.HTTP_200_OK})

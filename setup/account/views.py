@@ -118,8 +118,6 @@ class Search(LoginRequiredMixin, AdminAccessMixin, View):
 
     def get(self, request):
         form = self.form_class
-        print("#" * 100)
-        print(self.request.GET)
         return render(request, self.template_name, {'form': form})
 
     def post(self):
