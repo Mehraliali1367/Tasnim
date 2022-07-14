@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="14010423 13:00">
-      <change beforePath="$PROJECT_DIR$/setup/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/search.html" afterDir="false" />
+    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="14010423_2 13:02">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup/templates/inc/sidebarMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/templates/inc/sidebarMenu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657787318897</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="14010423_2 13:02">
+      <created>1657787552981</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1657787552981</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -121,6 +128,7 @@
     <MESSAGE value="14000421 13:30" />
     <MESSAGE value="14000421 14:00" />
     <MESSAGE value="14010423 13:00" />
-    <option name="LAST_COMMIT_MESSAGE" value="14010423 13:00" />
+    <MESSAGE value="14010423_2 13:02" />
+    <option name="LAST_COMMIT_MESSAGE" value="14010423_2 13:02" />
   </component>
 </project>
