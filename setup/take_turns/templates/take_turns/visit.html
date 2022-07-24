@@ -113,16 +113,17 @@ async function getdoctor() {
         }
         const response = await axios.get('/getdoctordateapi/',{params:{date:date_per(document.getElementById('pdate').value)}});
         recive = response.data;
+        console.log(recive)
         if(recive.length>0){
             recive.forEach((item) => {
-                let doc = item.parent != null ? item.name + " ------ " : "";
-                const option = new Option(doc + item.doctor.name, item.id);
+                const option = new Option( item.doctor.name);
                 option.setAttribute("from",item.from_hour);
                 option.setAttribute("to",item.to_hour);
                 option.setAttribute("interval",item.interval_sick);
+                option.setAttribute("id",item.doctor.id);
                 namedoc.appendChild(option);
             });
-            getID(recive);
+            getChangeDoctorDropdown(recive);
         }else{
                 const option = new Option( " برای این تاریخ پزشکی تعریف نشده است");
                 namedoc.appendChild(option);
@@ -168,13 +169,13 @@ async function getservice() {
 
 <!--// payesh dropdown list doctor baraye taghirat -->
 namedoc.onchange = function() {
-                  getID(recive)}
+                  getChangeDoctorDropdown(recive)}
 
 <!-- afzodan id doctor baraye ersal -->
-async function getID(data){
+async function getChangeDoctorDropdown(data){
 try{
     let obj=namedoc.options[namedoc.selectedIndex];
-    data_send.append("doctor", obj.value);
+<!--    data_send.append("doctor", obj.value);-->
     const response = await axios.get('/gethourvisit/',{params:{date:date_per(document.getElementById('pdate').value)}});
         reciveHour = response.data;
 <!--        console.log(reciveHour)-->
@@ -204,6 +205,7 @@ function(event) { // 1
     event.preventDefault()
     data_send.delete("hour");
     data_send.delete("serial");
+    data_send.append("doctor", namedoc.options[namedoc.selectedIndex].id);
     data_send.append("date", date_per(document.getElementById('pdate').value));
     data_send.append("hour",document.querySelector("#hour-visit").innerText);
     data_send.append("serial",document.getElementById('serial').value);
@@ -226,13 +228,12 @@ function(event) { // 1
                 icon: 'error',
                 title: 'بامشکل مواجه شدید,دوباره سعی کنید!',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
                 })
         )
     data_send.delete("date")
     data_send.delete("csrfmiddlewaretoken")
     })
-
 
 <!-- eslah format 1401101 be 14010101 tedad 8 character -->
 function date_per(date){
@@ -249,14 +250,10 @@ function date_per(date){
    return result;
 }
 
-
-
 function create_radio(from,to,identity){
 let myradio=document.querySelector("#my-modal");
 myradio.className="modal-body";
 myradio.innerHTML="";
-
-
 
 for (let i = 0; i < to-from ;i++) {
     let time=60/identity;
