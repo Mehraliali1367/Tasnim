@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="change venv 14000422 01:25">
+    <list default="true" id="73d93952-ffc0-4d0c-adc7-8cef33be899b" name="Changes" comment="change venv 14000503 23:05">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/setup/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/manage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/visit.html" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/templates/take_turns/visit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup/take_turns/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup/take_turns/views.py" afterDir="false" />
     </list>
@@ -122,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657745999370</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="change venv 14000503 23:05">
+      <created>1658687763356</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1658687763356</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,6 +150,7 @@
     <MESSAGE value="14000421 13:30" />
     <MESSAGE value="test" />
     <MESSAGE value="change venv 14000422 01:25" />
-    <option name="LAST_COMMIT_MESSAGE" value="change venv 14000422 01:25" />
+    <MESSAGE value="change venv 14000503 23:05" />
+    <option name="LAST_COMMIT_MESSAGE" value="change venv 14000503 23:05" />
   </component>
 </project>

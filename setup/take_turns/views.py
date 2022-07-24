@@ -7,7 +7,7 @@ from .serializers import DoctorSerializer, PresenceSerializer, VisitSerializer, 
 from django.contrib import messages
 from rest_framework.generics import ListCreateAPIView
 from django.http import JsonResponse
-from rest_framework.generics import CreateAPIView, ListAPIView,RetrieveUpdateDestroyAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -85,7 +85,7 @@ class Visit(View):
         instance_doctor = get_object_or_404(models.Doctor, id=doctor)
         print(doctor, datetime_persian, hour, user, instance_doctor)
         instance_user = get_object_or_404(User, serial=user)
-        print(doctor,datetime_persian,hour,user,instance_doctor,instance_user)
+        print(doctor, datetime_persian, hour, user, instance_doctor, instance_user)
         models.Visit.objects.create(
             doctor=instance_doctor,
             datetime_persian=datetime_persian,
@@ -99,7 +99,8 @@ class GetHourVisitApi(ListCreateAPIView):
     serializer_class = VisitSerializer
 
     def get_queryset(self):
-        return models.Visit.objects.filter(datetime_persian=self.request.GET["date"])
+        doctor = get_object_or_404(models.Doctor, id=self.request.GET["doctor"])
+        return models.Visit.objects.filter(datetime_persian=self.request.GET["date"], doctor=doctor)
 
 
 class ServicesDifinit(View):

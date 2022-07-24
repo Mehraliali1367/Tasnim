@@ -175,10 +175,14 @@ namedoc.onchange = function() {
 async function getChangeDoctorDropdown(data){
 try{
     let obj=namedoc.options[namedoc.selectedIndex];
-<!--    data_send.append("doctor", obj.value);-->
-    const response = await axios.get('/gethourvisit/',{params:{date:date_per(document.getElementById('pdate').value)}});
+    const response = await axios.get('/gethourvisit/',
+    {params:
+        {
+            date:date_per(document.getElementById('pdate').value),
+            doctor:namedoc.options[namedoc.selectedIndex].id
+        }
+    });
         reciveHour = response.data;
-<!--        console.log(reciveHour)-->
     create_radio(parseInt(obj.getAttribute("from")),parseInt(obj.getAttribute("to")),parseInt(obj.getAttribute("interval")))
 
     const btn = document.querySelector('#my-modal');
@@ -297,6 +301,7 @@ for (let i = 0; i < to-from ;i++) {
 
     }
 }
+
 
 
 
