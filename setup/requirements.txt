@@ -16,6 +16,8 @@ kavenegar==1.1.2
 paramiko==2.11.0
 pefile==2021.9.3
 Pillow==9.2.0
+psycopg2-binary==2.9.3
+psycopg2
 pycparser==2.21
 pyinstaller==5.1
 pyinstaller-hooks-contrib==2022.5
