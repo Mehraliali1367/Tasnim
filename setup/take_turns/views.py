@@ -147,3 +147,39 @@ class DeleteDoctor(RetrieveUpdateDestroyAPIView):
         doctor.delete()
 
         return Response({status.HTTP_200_OK})
+
+
+class SearchTakeTurns(View):
+    template_name = 'take_turns/search_take_turns.html'
+    form_class = forms.SearchForm
+
+    def get(self, request):
+        form = self.form_class
+        return render(request, self.template_name, {'form': form})
+
+    def post(self):
+        pass
+
+
+class GetAllTakeTurns(ListCreateAPIView):
+    queryset = models.Visit.objects.all()
+    serializer_class = VisitSerializer
+    search_fields = [
+        '^datetime_persian',
+    ]
+    # filterset_fields = {
+    #     'datetime_persian': ['gte', 'exact', 'lte']
+    # }
+
+
+class DeleteTakeTurns(RetrieveUpdateDestroyAPIView):
+    serializer_class = VisitSerializer
+
+    # permission_classes = [permissions.IsAuthenticated]
+
+    def delete(self, request, *args, **kwargs):
+        id = self.request.GET.get('obj', None)
+        nobat = models.Visit.objects.get(id=id)
+        nobat.delete()
+
+        return Response({status.HTTP_200_OK})

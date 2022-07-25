@@ -75,7 +75,8 @@
                 <i class="fa  fa-circle-o nav-icon"></i>
                 <p>حضورپزشک</p>
             </a>
-        </li>        <li class="nav-item">
+        </li>
+        <li class="nav-item">
             <a href="{% url 'take_turns:getdoctors' %}" class="nav-link">
                 <i class="fa  fa-circle-o nav-icon"></i>
                 <p>حذف پزشک</p>
@@ -84,9 +85,10 @@
         <li class="nav-item">
             <a href="{% url 'take_turns:servicesdifinit' %}" class="nav-link">
                 <i class="fa  fa-circle-o nav-icon"></i>
-                <p>خدمات</p>
+                <p>سرویس ها</p>
             </a>
         </li>
+
     </ul>
 
 </li>
@@ -96,7 +98,7 @@
         <i class="nav-icon fa fa-plus-square-o"></i>
         <p>
             <i class="fa fa-angle-left right"></i>
-           کاربر ارشد
+            کاربر ارشد
         </p>
     </a>
     <ul class="nav nav-treeview">
@@ -104,6 +106,12 @@
             <a href="{% url 'account:search' %}" class="nav-link">
                 <i class="fa  fa-circle-o nav-icon"></i>
                 <p>جستجو کاربران</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'take_turns:searchـtakeـturns' %}" class="nav-link">
+                <i class="fa  fa-circle-o nav-icon"></i>
+                <p>نوبت های دریافت شده</p>
             </a>
         </li>
     </ul>

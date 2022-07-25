@@ -13,4 +13,7 @@ urlpatterns = [
     path('gethourvisit/', views.GetHourVisitApi.as_view(), name='gethourvisitapi'),
     path('visit/', views.Visit.as_view(), name='visit'),
     path('getdoctors/', views.GetDoctors.as_view(), name='getdoctors'),
+    path('searchـtakeـturns/', views.SearchTakeTurns.as_view(), name='searchـtakeـturns'),
+    path('get_all_take_turns_api/', views.GetAllTakeTurns.as_view(), name='get_all_take_turns'),
+    path('del_take_turns_api/', views.DeleteTakeTurns.as_view(), name='DeleteTakeTurns'),
 ]

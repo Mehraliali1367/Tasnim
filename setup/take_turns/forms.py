@@ -24,3 +24,7 @@ class ServicesForm(forms.ModelForm):
     class Meta:
         model = Services
         fields = ("service",)
+
+
+class SearchForm(forms.Form):
+    txt = forms.CharField(label='جستجو',widget=forms.TextInput(attrs={'class':'form-control'}))
